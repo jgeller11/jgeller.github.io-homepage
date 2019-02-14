@@ -1,0 +1,145 @@
+<!-- jon's homepage, currently. cool stuff -->
+
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="sStyle.css">
+    <script src="sMain.js"></script>
+    <link rel='shortcut icon' href='icon.png' type='image/x-icon' />
+    <title>.</title>
+
+</head>
+
+<body onload="loadReminder(); refresh(); parallax(); runThis()">
+    <div style="margin-bottom: none; min-height: 101%; background-color: white; background-size: cover; background-attachment: fixed;">
+        <br />
+        <br />
+        <br />
+<!--        <button class="b" onclick="changeReminder()"> sneaky </button>-->
+        <div class="shadowbox">
+            <button class="b" onclick="changeReminder()"> sneaky </button>
+            <form method="get" id="jeff"  action="http://www.google.com/search">
+                <div class="search" id="sarch">
+
+                    <input type="text" id="bart" class="bar" name='q' maxlength="2550" />
+                    <div class="searc"></div>
+                    <div class="grayBar"></div>
+                    <p id="tim" class="time"></p>
+                    <p class="reminder" id="r1"></p>
+                    <p class="reminder2" id="r2"></p>
+                    <p class="reminder3" id="r3"></p>
+                    <p class="reminder4" id="r4"></p>
+                    <p class="reminder5" id="r5"></p>
+                    <p class="reminder6" id="r6"></p>
+                    <p class="reminder7" id="r7"></p>
+                    <p class="reminder8" id="r8"></p>
+                    <p class="reminder9" id="r9"></p>
+                    <div class="bdivg"></div>
+                    <div class="bdiv"></div>
+                    <div id="reminderLinkContainer" class="reminderLinkContainer">
+                        <!-- <a id="reminderLink1"><div class="reminderLink" style="left: 3%; top: 5%;"><div class="centeringTable"><p class="linkText" id="reminderLinkName1"></p></div></div></a> -->
+                    </div>
+                </div>
+            </form>
+            <div id="remindContainer">
+<!--
+                <p class="reminder" id="notes"> </p>
+                <button class="b" onclick="changeReminder()"> sneaky </button>
+-->
+            </div>
+        </div>
+        <script type="text/javascript">
+            jeff.bart.focus();
+            //focus on search bar on load
+
+        </script>
+    </div>
+    <div class="parallax">
+    </div>
+    <a href="http://www.youtube.com"><div class="parallax2" id="scrolldiv"></div></a>
+    <div class="parallax3" id="scrolldiv2"></div>
+    <div class="parallax4" id="scrolldiv3"></div>
+    <div class="parallax5" id="scrolldiv4"></div>
+    <div class="parallax6" id="scrolldiv5">
+
+        <img src="b1.jpg" class="imag" id="imag" />
+
+        <p style="color:white; position: fixed; z-index: 70; font-family: monospace; width:100%; top: 40%; text-align: center; font-size: 25;">why did i do this</p>
+        <button class="bua" onclick="alert('lmao i have no clue')"> learn more</button>
+    </div>
+    <div class="scrollOver" id="scrollOver"></div>
+
+    <script>
+        window.requestAnimationFrame = window.requestAnimationFrame
+         || window.mozRequestAnimationFrame
+         || window.webkitRequestAnimationFrame
+         || window.msRequestAnimationFrame
+         || function(f){setTimeout(f, 1000/60)}
+
+        var scrolldiv = document.getElementById('scrolldiv')
+        var scrolldiv2 = document.getElementById('scrolldiv2')
+        var scrolldiv3 = document.getElementById('scrolldiv3')
+        var scrolldiv4 = document.getElementById('scrolldiv4')
+        var scrolldiv5 = document.getElementById('scrolldiv5')
+        var imag = document.getElementById('imag')
+        var scrollOver = document.getElementById('scrollOver')
+
+        var scrollheight = document.body.scrollHeight // height of entire document
+        var windowheight = window.innerHeight // height of browser window
+
+        function parallax(){
+         var scrolltop = window.pageYOffset // get number of pixels document has scrolled vertically
+         var scrollamount = (scrolltop / windowheight) // get amount scrolled in percent of screen
+
+
+//             scrolldiv2.style.top = ((3 - ((scrollamount-.2) * 2)))*100 + '%'
+//             scrolldiv3.style.top = ((4 - ((scrollamount-.2) * 3)))*100 + '%'
+//             scrolldiv4.style.top = ((5 - ((scrollamount-.2) * 4)))*100 + '%'
+         scrollOver.style.top = (365 - scrollamount * 100) + '%'
+         if (scrolltop/windowheight > 1.45){
+             scrolldiv.style.zIndex = 60
+             scrolldiv2.style.zIndex = 60
+             scrolldiv3.style.zIndex = 61
+             scrolldiv4.style.zIndex = 62
+             scrolldiv5.style.zIndex = 59
+             scrolldiv5.style.opacity = 1
+             scrolldiv5.style.top = 0
+             scrolldiv.style.top = (2.2 - scrollamount) * 100 + '%'
+             scrolldiv2.style.top = (1.95 - scrollamount) * 100 + '%'
+             scrolldiv3.style.top = (1.7 - scrollamount) * 100 + '%'
+             scrolldiv4.style.top = (1.45 - scrollamount) * 100 + '%'
+         } else {
+             scrolldiv.style.top = ((2 - ((scrollamount-.2) * 1)))*100 + '%'
+             scrolldiv2.style.top = ((3 - ((scrollamount-.2) * 2)))*100 + '%'
+             scrolldiv3.style.top = ((4 - ((scrollamount-.2) * 3)))*100 + '%'
+             scrolldiv4.style.top = ((5 - ((scrollamount-.2) * 4)))*100 + '%'
+             scrolldiv.style.zIndex = 17
+             scrolldiv2.style.zIndex = 16
+             scrolldiv3.style.zIndex = 14
+             scrolldiv4.style.zIndex = 10
+             scrolldiv5.style.zIndex = 12
+             scrolldiv5.style.opacity = 0
+             scrolldiv5.style.top = 2000
+             scrolldiv.style.opacity = 1
+             scrolldiv2.style.opacity = 1
+             scrolldiv3.style.opacity = 1
+             scrolldiv4.style.opacity = 1
+
+
+         }
+        }
+
+        window.addEventListener('scroll', function(){ // on page scroll
+         requestAnimationFrame(parallax) // call parallax() on next available screen paint
+        }, false)
+
+        window.addEventListener('resize', function(){ // on window resize
+         var scrolltop = window.pageYOffset // get number of pixels document has scrolled vertically
+         var scrollamount = (scrolltop / (scrollheight-windowheight)) * 100 // get amount scrolled (in %)
+         imag.style.left = ((100 - int(imag.style.width))/2).toString + '%'
+        }, false)
+    </script>
+
+</body>
+
+</html>
